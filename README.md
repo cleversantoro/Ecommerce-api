@@ -1,20 +1,20 @@
 # Ecommerce-api
 
-## Introduction
-This is an API for an e-commerce platform that allows users to manage products, orders, and customers.
+## Introdução  
+Esta é uma API para uma plataforma de e-commerce que permite aos usuários gerenciar produtos, pedidos e clientes.  
 
-## Installation
-To install the dependencies, run:
+## Instalação  
+Para instalar as dependências, execute:  
 ```bash
 npm install
-```
+```  
 
-## Usage
-To start the server, run:
+## Uso  
+Para iniciar o servidor, execute:  
 ```bash
 npm start
-```
-The server will start on `http://localhost:3000`.
+```  
+O servidor será iniciado em `http://localhost:3000`.  
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
+## Contribuição  
+Contribuições são bem-vindas! Faça um fork do repositório e envie um pull request.

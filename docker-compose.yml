@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: ecommerce-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: ["node", "src/index.js"]
+
+  frontend:
+    build: ../frontend
+    container_name: ecommerce-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ../frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api
+
+  db:
+    image: postgres:15
+    container_name: ecommerce-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ecommerce
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  db_data:
+  pgadmin_data:
+
